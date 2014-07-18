@@ -1,4 +1,5 @@
 vboxwrapper
 ===========
 
-To control VirtualBox VM on Linux/Unix platforms
+To control VirtualBox on Linux/Unix. This is meant as a temporary solution while waiting for VirtualBox API and XPCOM
+to be ported to Python3 (main problem being the XPCOM module).
