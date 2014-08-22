@@ -1,11 +1,23 @@
 #!/usr/bin/python
-# vim: expandtab ts=4 sw=4 sts=4:
-# -*- coding: utf-8 -*-
+# vim: expandtab ts=4 sw=4 sts=4 fileencoding=utf-8:
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 # Parts of this code have been taken from Pyserial project (http://pyserial.sourceforge.net/) under Python license
 
 import sys
-import os
 import string
 import time
 import threading
@@ -15,6 +27,7 @@ import select
 if sys.platform.startswith("win"):
     import win32pipe
     import win32file
+
 
 class PipeProxy(threading.Thread):
 
@@ -234,6 +247,7 @@ ACTIVE = 'ACTIVE'
 INACTIVE = 'INACTIVE'
 REALLY_INACTIVE = 'REALLY_INACTIVE'
 
+
 class TelnetOption(object):
     """Manage a single telnet option, keeps track of DO/DONT WILL/WONT."""
 
@@ -298,6 +312,7 @@ class TelnetOption(object):
                 pass
             else:
                 raise ValueError('option in illegal state %r' % self)
+
 
 class TelnetClient(object):
 

@@ -20,7 +20,7 @@ from setuptools import setup
 
 setup(
     name="vboxwrapper",
-    version="0.9",
+    version="0.9.1",
     url="http://github.com/GNS3/vboxwrapper",
     license="GNU General Public License v2 (GPLv2)",
     author="Jeremy Grossmann & Alexey Eromenko",
@@ -34,7 +34,7 @@ setup(
         },
     platforms="any",
     classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 4 - Beta",
         "Environment :: Console",
         "Intended Audience :: Information Technology",
         "Topic :: System :: Networking",
