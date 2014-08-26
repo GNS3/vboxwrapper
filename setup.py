@@ -16,7 +16,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name="vboxwrapper",
@@ -27,9 +27,10 @@ setup(
     author_email="package-maintainer@gns3.net",
     description="Script to control VirtualBox on Linux/Unix",
     long_description=open("README.md", "r").read(),
+    packages=find_packages(),
     entry_points={
         "console_scripts": [
-            "vboxwrapper = vboxwrapper:main",
+            "vboxwrapper = vboxwrapper.vboxwrapper:main",
             ]
         },
     platforms="any",
