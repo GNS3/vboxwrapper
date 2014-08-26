@@ -111,10 +111,12 @@ class VBOXInstance:
         self.image = ''
         self.nic = {}
         self.nics = '6'
+        self.nic_start_index = '0'
         self.udp = {}
         self.capture = {}
         self.netcard = 'Automatic'
         self.headless_mode = False
+        self.enable_console = True
         self.process = None
         self.pipeThread = None
         self.pipe = None
@@ -124,7 +126,9 @@ class VBOXInstance:
                                  'console',
                                  'nics',
                                  'netcard',
-                                 'headless_mode']
+                                 'headless_mode',
+                                 'enable_console',
+                                 'nic_start_index']
 
     def _start_vbox_service(self, vmname):
 
@@ -157,8 +161,12 @@ class VBOXInstance:
         self._vboxcontroller.console = int(self.console)
         self._vboxcontroller.adapter_type = self.netcard
         self._vboxcontroller.headless = self.headless_mode
+        self._vboxcontroller.enable_console = self.enable_console
         self._ethernet_adapters = []
-        for adapter_id in range(0, int(self.nics)):
+        for adapter_id in range(0, int(self.nic_start_index) + int(self.nics)):
+            if adapter_id < int(self.nic_start_index):
+                self._ethernet_adapters.append(None)
+                continue
             adapter = EthernetAdapter()
             if adapter_id in self.udp:
                 udp_info = self.udp[adapter_id]
@@ -606,7 +614,7 @@ class VBoxWrapperRequestHandler(SocketServer.StreamRequestHandler):
             self.send_reply(self.HSC_ERR_UNK_OBJ, 1,
                             "Cannot set attribute '%s' for '%s" % (attr, name))
             return
-        log.info("!! {}.{} = {}".format(name, attr, value))
+        print("!! {}.{} = {}".format(name, attr, value))
         setattr(VBOX_INSTANCES[name], attr, value)
         self.send_reply(self.HSC_INFO_OK, 1, "%s set for '%s'" % (attr, name))
 
