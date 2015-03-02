@@ -1,3 +1,5 @@
+> **Notice:** *vboxwrapper is not longer required for GNS3 >= 1.2.3*
+
 vboxwrapper
 ===========
 
